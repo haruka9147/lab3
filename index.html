@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/script.js"></script>
+    <style>
+        #panel{
+            width: 321px;
+            height: 321px;
+            overflow: hidden;
+        }
+        .tile{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border: 1px solid #000;
+            text-align: center;
+            margin: 0 5px 5px 0;
+            font-size: 26px;
+            font-weight: bold;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <h1>Sliding Puzzle</h1>
+   <div id="panel"></div>
+   <p>Moves: <span id="move"></span> <span id="done"></span></p>
+   <p id="Start">Start Time:</p>
+   <p id="End"></p>
+   <button onclick="restart();" id="restart">RESTART GAME</button>
+</body>
+</html>
