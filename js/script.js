@@ -73,20 +73,22 @@ function sumArray(arr,num){
     return sum;
 }
 
-document.write(sumArray([[2,2,3,4,5],[2,3,4,5,6],[3,4,5,6,7],[4,5,6,7,8],[5,6,7,8,9]],5));
+document.write(sumArray([[1,2,3,4,5],[2,3,4,5,6],[3,4,5,6,7],[4,5,6,7,8],[5,6,7,8,9]],5));
 
 
 
 // Q3.
 var tiles = [];
 var num = 0; // click count
-var arr = ['1','2','3','4','5','6','7','8',''];
-var checkarr = ['1','2','3','4','5','6','7','8',''];
+var arr = ['1','2','3','4','5','6','7','8','']; //shuffle array
+var checkarr = ['1','2','3','4','5','6','7','8','']; //check array
+var done = 1; // game result check val
 
 window.onload = function(){
     startGame();
 }
 
+//set div in #panel
 function startGame(){
     shuffle(arr);
     
@@ -106,6 +108,7 @@ function startGame(){
     }
 }
 
+// restart
 function restart(){
     //reset all contents
     tiles = [];
@@ -133,8 +136,8 @@ function shuffle(arr){
 }
 
 // geme result check
-var done = 1;
 function resultCheck(){
+    done = 1;
     for(var i = 0; i < tiles.length; i++){
         if(tiles[i].textContent !== checkarr[i]){
             done = 0;
@@ -142,7 +145,7 @@ function resultCheck(){
     }
 }
 
-//switch textContent
+//swap textContent
 function swapContent(i, k){
     var temp = tiles[i].textContent;
     tiles[i].textContent = tiles[k].textContent;
@@ -155,13 +158,13 @@ function swapContent(i, k){
 function hover(e){
     var i = e.target.index;
     if(i <= 5 && tiles[i + 3].textContent == ''){
-        e.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'lightgreen';
     }else if(i >= 3 && tiles[i - 3].textContent == ''){
-        e.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'lightgreen';
     }else if(i % 3 !== 2 && tiles[i + 1].textContent == ''){
-        e.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'lightgreen';
     }else if(i % 3 !== 0 && tiles[i - 1].textContent == ''){
-        e.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'lightgreen';
     }else{
         e.target.style.backgroundColor = 'red';
     }
@@ -189,16 +192,22 @@ function click(e){
         swapContent(i, i - 1);
         num++;
     }
+    // start stop watch
     if(num == 1){
         checkTime(0);
     }
+    
+    //check game result
     if(done == 1){
         checkTime(1);
         document.getElementById('done').innerHTML = ' --Done!!!';
     }
+    
+    //show move count
     document.getElementById('move').innerHTML = num;
 }
 
+//check time
 function checkTime(e){
     if(e == 0){
         myStart = new Date();
@@ -210,6 +219,7 @@ function checkTime(e){
     }
 }
 
+//set time
 function time(e){
     if(e == 0){
         var id = "Start";
