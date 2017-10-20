@@ -35,6 +35,17 @@ document.write('<h3>Q1. d</h3>');
 var arr = [10, 20, 30, 40, 50, 60, 70, 90];
 var sum = 0;
 
+for(var i = 1; i < 7; i += 1){
+    sum = sum + arr[i];
+}
+
+document.write(sum);
+document.write('<br>');
+
+//fixed loop
+var arr = [10, 20, 30, 40, 50, 60, 70, 90];
+var sum = 0;
+
 for(var i = 0; i < 8; i += 1){
     sum = sum + arr[i];
 }
@@ -119,7 +130,7 @@ function restart(){
     document.getElementById('move').innerHTML = '';
     document.getElementById('Start').innerHTML = 'Start Time:';
     document.getElementById('End').style.display = 'none';
-    clearInterval( myInterval );
+    //clearInterval( myInterval );
 }
 
 //shuffle
@@ -139,9 +150,7 @@ function shuffle(arr){
 function resultCheck(){
     done = 1;
     for(var i = 0; i < tiles.length; i++){
-        if(tiles[i].textContent !== checkarr[i]){
-            done = 0;
-        }
+        if(tiles[i].textContent !== checkarr[i]) done = 0;
     }
 }
 
@@ -192,7 +201,7 @@ function click(e){
         swapContent(i, i - 1);
         num++;
     }
-    // start stop watch
+    // start Time
     if(num == 1){
         checkTime(0);
     }
@@ -207,31 +216,45 @@ function click(e){
     document.getElementById('move').innerHTML = num;
 }
 
-//check time
 function checkTime(e){
     if(e == 0){
         myStart = new Date();
-        myInterval　=　setInterval("time(0)",1000);
+        hours = myStart.getHours();
+        min = myStart.getMinutes();
+        sec = myStart.getSeconds();
+        document.getElementById('Start').innerHTML = "Start Time: " + hours + ":" + min + ":" + sec;
     }else{
-        time(1);	
+        myEnd = new Date();
+        hours = myEnd.getHours();
+        min = myEnd.getMinutes();
+        sec = myEnd.getSeconds();
+        document.getElementById('End').innerHTML = "End Time: " + hours + ":" + min + ":" + sec;	
         document.getElementById('End').style.display = 'block';
-        clearInterval( myInterval );
     }
 }
 
+//check time
+//function checkTime(e){
+//    if(e == 0){
+//        myStart = new Date();
+//        myInterval　=　setInterval("time(0)",1000);
+//    }else{
+//        time(1);	
+//        document.getElementById('End').style.display = 'block';
+//        clearInterval( myInterval );
+//    }
+//}
+
 //set time
-function time(e){
-    if(e == 0){
-        var id = "Start";
-    }else{
-        var id = "End";
-    }
-    myStop = new Date();
-    myTime = myStop.getTime() - myStart.getTime();
-    myH = Math.floor(myTime/(60*60*1000)); //Hours
-    myTime = myTime-(myH*60*60*1000);	
-    myM = Math.floor(myTime/(60*1000)); //Minutes
-    myTime = myTime-(myM*60*1000);	
-    myS = Math.floor(myTime/1000); //seconds
-    document.getElementById(id).innerHTML = id + " Time: " + myH + ":" + myM + ":" + myS;
-}
+//function time(e){
+//    var id;
+//    (e == 0) ? id = "Start" : id = "End" ;
+//    myStop = new Date();
+//    myTime = myStop.getTime() - myStart.getTime();
+//    myH = Math.floor(myTime/(60*60*1000)); //Hours
+//    myTime = myTime-(myH*60*60*1000);	
+//    myM = Math.floor(myTime/(60*1000)); //Minutes
+//    myTime = myTime-(myM*60*1000);	
+//    myS = Math.floor(myTime/1000); //seconds
+//    document.getElementById(id).innerHTML = id + " Time: " + myH + ":" + myM + ":" + myS;
+//}
