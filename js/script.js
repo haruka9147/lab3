@@ -232,29 +232,3 @@ function checkTime(e){
         document.getElementById('End').style.display = 'block';
     }
 }
-
-//check time
-//function checkTime(e){
-//    if(e == 0){
-//        myStart = new Date();
-//        myInterval　=　setInterval("time(0)",1000);
-//    }else{
-//        time(1);	
-//        document.getElementById('End').style.display = 'block';
-//        clearInterval( myInterval );
-//    }
-//}
-
-//set time
-//function time(e){
-//    var id;
-//    (e == 0) ? id = "Start" : id = "End" ;
-//    myStop = new Date();
-//    myTime = myStop.getTime() - myStart.getTime();
-//    myH = Math.floor(myTime/(60*60*1000)); //Hours
-//    myTime = myTime-(myH*60*60*1000);	
-//    myM = Math.floor(myTime/(60*1000)); //Minutes
-//    myTime = myTime-(myM*60*1000);	
-//    myS = Math.floor(myTime/1000); //seconds
-//    document.getElementById(id).innerHTML = id + " Time: " + myH + ":" + myM + ":" + myS;
-//}
